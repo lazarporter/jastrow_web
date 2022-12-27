@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext, useEffect} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { AuthContext } from '../contexts/AuthContext';
 
 function Copyright(props: any) {
   return (
@@ -31,13 +32,17 @@ function Copyright(props: any) {
 }
 
 export const LogInPage = () => {
+  const { login, user } = useContext(AuthContext);
+  useEffect(() => {
+    return () => {
+      console.log(user)
+    };
+  }, [user])
+  
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    login(data.get('email') as string, data.get('password') as string);
   };
 
   return (

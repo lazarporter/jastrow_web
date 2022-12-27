@@ -5,17 +5,27 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { routes } from './routes';
 import { AuthProvider } from './contexts/AuthContext';
+import { Box, SxProps } from '@mui/system';
+import { NavBar } from './components/NavBar';
 
 const router = createBrowserRouter(routes);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const styles: SxProps = {
+  height: '100%',
+};
+
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <Box sx={styles}>
+      <AuthProvider>
+        <NavBar />
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </Box>
   </React.StrictMode>
 );
 

@@ -23,7 +23,12 @@ type SearchResponse = {
     }[];
   };
 };
-export const search = async (query: string = 'מאי') => {
+
+export const search = async (query: string) => {
+  if(!query.length) {
+    return Promise.reject('No search term provided')
+  }
+
   const data = {
     query,
     type: 'text',

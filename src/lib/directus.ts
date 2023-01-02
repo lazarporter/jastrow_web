@@ -10,7 +10,7 @@ type MyCollections = {
   words: Word;
 };
 
-const directus = new Directus<MyCollections>('https://yoixi3ry.directus.app/');
+export const directus = new Directus<MyCollections>('https://yoixi3ry.directus.app/');
 
 export const getDirectusAPI = () => ({
   login: (username: string, password: string) => {

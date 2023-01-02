@@ -1,32 +1,10 @@
-const searchURL = 'https://www.sefaria.org/api/search-wrapper';
+import { SearchResponse } from "./api/sefariaTypes";
 
-type SearchResponse = {
-  took: number;
-  timed_out: boolean;
-  _shards: {
-    failed: number;
-    skipped: number;
-    successful: number;
-    total: number;
-  };
-  hits: {
-    max_score: number;
-    total: number;
-    hits: {
-      highlight: {
-        exact: string[];
-      };
-      _id: string;
-      _index: 'text-a' | string;
-      _score: number;
-      _type: 'text' | string;
-    }[];
-  };
-};
+const searchURL = 'https://www.sefaria.org/api/search-wrapper';
 
 export const search = async (query: string) => {
   if(!query.length) {
-    return Promise.reject('No search term provided')
+    return Promise.reject('No search term provided');
   }
 
   const data = {
@@ -34,6 +12,7 @@ export const search = async (query: string) => {
     type: 'text',
     filters: ['Reference/Dictionary/Jastrow'],
     filter_fields: ['path'],
+    source_proj: true,
   };
 
   try {

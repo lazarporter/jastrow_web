@@ -4,7 +4,6 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { routes } from './routes';
-import { AuthProvider } from './contexts/AuthContext';
 import { Box, SxProps } from '@mui/system';
 import { NavBar } from './components/NavBar';
 
@@ -21,10 +20,8 @@ const styles: SxProps = {
 root.render(
   <React.StrictMode>
     <Box sx={styles}>
-      <AuthProvider>
-        <NavBar />
-        <RouterProvider router={router} />
-      </AuthProvider>
+      <NavBar />
+      <RouterProvider router={router} />
     </Box>
   </React.StrictMode>
 );

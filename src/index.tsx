@@ -4,15 +4,25 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { routes } from './routes';
+import { Box, SxProps } from '@mui/system';
+import { NavBar } from './components/NavBar';
 
 const router = createBrowserRouter(routes);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const styles: SxProps = {
+  height: '100%',
+};
+
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Box sx={styles}>
+      <NavBar />
+      <RouterProvider router={router} />
+    </Box>
   </React.StrictMode>
 );
 

@@ -1,5 +1,6 @@
 import React from 'react';
+import { Search } from '../components/Search/Search';
 
 export const HomePage = () => {
-  return <h1>Home: Not implemented just yet</h1>;
+  return <Search/>
 };
